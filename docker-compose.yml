@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+    ports:
+      - ${DATABASE_PORT}:5432
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - ${ADMINER_PORT}:8080
+  api:
+    container_name: FDJ-api
+    build:
+      context: api
+      dockerfile: Dockerfile
+      target: development
+    restart: always
+    command: npm run start:dev
+    depends_on:
+      - db
+    ports:
+      - ${API_PORT}:3000
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA}
+    volumes:
+      - ./api:/app/api
+      - ./common:/app/common
+      - /app/api/node_modules
+
+volumes:
+  nodemodules: {}
