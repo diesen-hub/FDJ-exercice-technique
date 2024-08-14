@@ -1,16 +1,20 @@
 import { ILeague } from './league.inerface';
 import { IPlayer } from './player.inerface';
+import { ISignin } from './signin.inerface';
 
 export interface ICreateTeam {
   name: string;
   thumbnail: string;
 }
 
-export interface ITeam extends ICreateTeam {
+export interface ITeam {
   id: string;
   leagueId: string;
-  league: ILeague;
+  name: string;
+  thumbnail: string;
+  league?: ILeague;
   players: IPlayer[];
+  signins: ISignin[];
   createdDate: Date;
   updatedDate: Date;
 }

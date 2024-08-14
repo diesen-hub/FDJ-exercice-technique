@@ -6,7 +6,7 @@
     "deleteOutDir": true,
     "assets": [
       {
-        "include": "../common/**",
+        "include": "../../common/**",
         "outDir": "dist/common",
         "watchAssets": true
       }

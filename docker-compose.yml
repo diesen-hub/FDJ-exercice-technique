@@ -30,6 +30,7 @@ services:
     ports:
       - ${API_PORT}:3000
     environment:
+      NODE_ENV: ${NODE_ENV}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USER: ${DATABASE_USER}
@@ -39,7 +40,3 @@ services:
     volumes:
       - ./api:/app/api
       - ./common:/app/common
-      - /app/api/node_modules
-
-volumes:
-  nodemodules: {}

@@ -5,9 +5,11 @@ export interface ICreateLeague {
   sport: string;
 }
 
-export interface ILeague extends ICreateLeague {
+export interface ILeague {
   id: string;
-  teams: ITeam[];
+  name: string;
+  sport: string;
+  teams?: ITeam[];
   createdDate: Date;
   updatedDate: Date;
 }

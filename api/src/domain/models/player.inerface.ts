@@ -9,11 +9,15 @@ export interface ICreatePlayer {
   signin: ICreateSignin;
 }
 
-export interface IPlayer extends Omit<ICreatePlayer, 'signin'> {
+export interface IPlayer {
   id: string;
   teamId: string;
-  team: ITeam;
-  signin: ISignin;
+  name: string;
+  position: string;
+  thumbnail: string;
+  born: Date;
+  team?: ITeam;
+  signins: ISignin[];
   createdDate: Date;
   updatedDate: Date;
 }
