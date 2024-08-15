@@ -7,8 +7,6 @@ import { PlayerEntity } from './player.entity';
 
 @Injectable()
 export class PlayerRepository implements IPlayerRepository {
-  private readonly relations = ['signins'];
-
   constructor(
     @InjectRepository(PlayerEntity)
     private readonly _playerRepository: Repository<PlayerEntity>,
@@ -23,15 +21,19 @@ export class PlayerRepository implements IPlayerRepository {
 
   public async get(): Promise<IPlayer[]> {
     const playerEntities: PlayerEntity[] = await this._playerRepository.find({
-      relations: this.relations,
+      relations: {
+        signins: true,
+      },
     });
     return playerEntities.map((playerEntity) => playerEntity.toDomaineEntity());
   }
 
   public async getById(id: number): Promise<IPlayer | null> {
     const playerEntity = await this._playerRepository.findOne({
+      relations: {
+        signins: true,
+      },
       where: { id: id },
-      relations: this.relations,
     });
     return playerEntity?.toDomaineEntity() ?? null;
   }
@@ -39,7 +41,9 @@ export class PlayerRepository implements IPlayerRepository {
   public async getByTeamId(id: number): Promise<IPlayer[]> {
     const playerEntities = await this._playerRepository.find({
       where: { teamId: id },
-      relations: this.relations,
+      relations: {
+        signins: true,
+      },
     });
 
     return playerEntities.map((playerEntity) => playerEntity.toDomaineEntity());

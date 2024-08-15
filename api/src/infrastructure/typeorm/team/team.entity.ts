@@ -35,7 +35,8 @@ export class TeamEntity {
   public updatedDate: Date;
 
   @ManyToOne(() => LeagueEntity, (league: LeagueEntity) => league.teams)
-  league?: LeagueEntity;
+  @JoinColumn({ referencedColumnName: 'id' })
+  public league?: LeagueEntity;
 
   @OneToMany(() => PlayerEntity, (player: PlayerEntity) => player.team)
   @JoinColumn({ referencedColumnName: 'teamId' })

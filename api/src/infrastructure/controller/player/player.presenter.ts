@@ -30,6 +30,7 @@ export class PlayerPresenter implements IPlayer {
     this.teamId = data.teamId;
     this.name = data.name;
     this.position = data.position;
+    this.thumbnail = data.thumbnail;
     this.born = data.born;
     this.team = data.team ? new TeamPresenter(data.team) : undefined;
     this.signins =

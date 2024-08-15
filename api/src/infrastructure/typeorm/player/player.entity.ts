@@ -40,7 +40,8 @@ export class PlayerEntity {
   public updatedDate: Date;
 
   @ManyToOne(() => TeamEntity, (team: TeamEntity) => team.players)
-  team?: TeamEntity;
+  @JoinColumn({ referencedColumnName: 'id' })
+  public team?: TeamEntity;
 
   @OneToMany(() => SigninEntity, (signin: SigninEntity) => signin.player)
   @JoinColumn({ referencedColumnName: 'playerId' })

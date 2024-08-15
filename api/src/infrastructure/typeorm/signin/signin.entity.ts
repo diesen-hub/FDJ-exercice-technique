@@ -2,6 +2,7 @@ import { ISignin } from '@domain/models/signin.inerface';
 import {
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
@@ -34,10 +35,12 @@ export class SigninEntity {
   public updatedDate: Date;
 
   @ManyToOne(() => TeamEntity, (team: TeamEntity) => team.signins)
-  team?: TeamEntity;
+  @JoinColumn({ referencedColumnName: 'id' })
+  public team?: TeamEntity;
 
   @ManyToOne(() => PlayerEntity, (player: PlayerEntity) => player.signins)
-  player?: PlayerEntity;
+  @JoinColumn({ referencedColumnName: 'id' })
+  public player?: PlayerEntity;
 
   toDomaineEntity(): ISignin {
     return {

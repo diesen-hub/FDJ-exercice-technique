@@ -23,7 +23,7 @@ export class CreateNewSigninUseCases {
     const team = await this._teamRepository.getById(data.teamId);
     if (!team) {
       this._exception.notFoundException(
-        `Player with the given id '${data.teamId}' was not found`,
+        `Team with the given id '${data.teamId}' was not found`,
       );
       return null;
     }
