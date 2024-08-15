@@ -1,38 +1,30 @@
 import { ISignin } from '@domain/models/signin.inerface';
 import {
-  Column,
   CreateDateColumn,
   Entity,
-  Generated,
-  JoinColumn,
   ManyToOne,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ColumnNumericTransformer } from '../helpers/numeric-column.transformer';
 import { PlayerEntity } from '../player/player.entity';
 import { TeamEntity } from '../team/team.entity';
 
 @Entity('signin')
 export class SigninEntity {
-  @Column({ type: 'uuid', unique: true })
-  @Generated('uuid')
-  public id?: string;
+  @PrimaryGeneratedColumn({ type: 'integer' })
+  public id?: number;
 
-  @PrimaryColumn('uuid')
-  public playerId: string;
+  @PrimaryColumn({ type: 'integer' })
+  public playerId: number;
 
-  @PrimaryColumn('uuid')
-  public teamId: string;
+  @PrimaryColumn({ type: 'integer' })
+  public teamId: number;
 
   @PrimaryColumn('varchar', { length: '20' })
   public currency: string;
 
-  @PrimaryColumn('numeric', {
-    precision: 20,
-    scale: 2,
-    transformer: new ColumnNumericTransformer(),
-  })
+  @PrimaryColumn('integer')
   public amount: number;
 
   @CreateDateColumn({ name: 'createdDate' })
@@ -42,16 +34,14 @@ export class SigninEntity {
   public updatedDate: Date;
 
   @ManyToOne(() => TeamEntity, (team: TeamEntity) => team.signins)
-  @JoinColumn({ name: 'teamId' })
   team?: TeamEntity;
 
   @ManyToOne(() => PlayerEntity, (player: PlayerEntity) => player.signins)
-  @JoinColumn({ name: 'playerId' })
   player?: PlayerEntity;
 
   toDomaineEntity(): ISignin {
     return {
-      id: this.id ?? '',
+      id: this.id ?? 0,
       playerId: this.playerId,
       teamId: this.teamId,
       currency: this.currency,

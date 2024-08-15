@@ -24,7 +24,7 @@ export class LeagueRepository implements ILeagueRepository {
     return leagueEntities.map((leagueEntity) => leagueEntity.toDomaineEntity());
   }
 
-  public async getById(id: string): Promise<ILeague | null> {
+  public async getById(id: number): Promise<ILeague | null> {
     const leagueEntity = await this._leagueRepository.findOne({
       where: { id: id },
     });

@@ -3,19 +3,18 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  Generated,
   JoinColumn,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { TeamEntity } from '../team/team.entity';
 
 @Entity('league')
 export class LeagueEntity {
-  @Column({ type: 'uuid', unique: true })
-  @Generated('uuid')
-  public id?: string;
+  @PrimaryGeneratedColumn({ type: 'integer' })
+  public id?: number;
 
   @PrimaryColumn('varchar', { length: '100' })
   public name: string;
@@ -35,7 +34,7 @@ export class LeagueEntity {
 
   toDomaineEntity(): ILeague {
     return {
-      id: this.id ?? '',
+      id: this.id ?? 0,
       name: this.name,
       sport: this.sport,
       teams: this.teams?.map((team) => team?.toDomaineEntity()) ?? [],

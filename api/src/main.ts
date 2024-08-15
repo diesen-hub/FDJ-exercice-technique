@@ -14,7 +14,6 @@ async function bootstrap() {
 
   // swagger config
   const config = new DocumentBuilder()
-    .addBearerAuth()
     .setTitle('FDJ api')
     .setVersion('1.0')
     .build();

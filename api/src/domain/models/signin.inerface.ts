@@ -1,12 +1,14 @@
 export interface ICreateSignin {
-  amount: string;
+  playerId: number;
+  teamId: number;
+  amount: number;
   currency: string;
 }
 
 export interface ISignin {
-  id: string;
-  playerId: string;
-  teamId: string;
+  id: number;
+  playerId: number;
+  teamId: number;
   amount: number;
   currency: string;
   createdDate: Date;

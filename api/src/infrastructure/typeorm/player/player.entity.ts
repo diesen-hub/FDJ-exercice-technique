@@ -3,11 +3,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  Generated,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { SigninEntity } from '../signin/signin.entity';
@@ -15,12 +15,11 @@ import { TeamEntity } from '../team/team.entity';
 
 @Entity('player')
 export class PlayerEntity {
-  @Column({ type: 'uuid', unique: true })
-  @Generated('uuid')
-  public id?: string;
+  @PrimaryGeneratedColumn({ type: 'integer' })
+  public id?: number;
 
-  @Column('uuid')
-  public teamId: string;
+  @Column({ type: 'integer', nullable: true })
+  public teamId?: number;
 
   @PrimaryColumn('varchar', { length: '100' })
   public name: string;
@@ -41,7 +40,6 @@ export class PlayerEntity {
   public updatedDate: Date;
 
   @ManyToOne(() => TeamEntity, (team: TeamEntity) => team.players)
-  @JoinColumn({ name: 'teamId' })
   team?: TeamEntity;
 
   @OneToMany(() => SigninEntity, (signin: SigninEntity) => signin.player)
@@ -50,7 +48,7 @@ export class PlayerEntity {
 
   toDomaineEntity(): IPlayer {
     return {
-      id: this.id ?? '',
+      id: this.id ?? 0,
       teamId: this.teamId,
       name: this.name,
       position: this.position,

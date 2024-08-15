@@ -19,7 +19,9 @@ import {
 import { CreateNewLeagueUseCases } from '@useCases/league/create-new-league.usecase';
 import { RetrieveAllLeagueUseCases } from '@useCases/league/retrieve-all-league.usecase';
 import { RetrieveLeagueByIdUseCases } from '@useCases/league/retrieve-league-by-id.usecase';
+import { RetrieveTeamsByLeagueIdUseCases } from '@useCases/team/retrieve-teams-by-league-id.usecase';
 import { IdDto } from '../dto/id.dto';
+import { TeamPresenter } from '../team/team.presenter';
 import { CreateLeagueDto } from './league.dto';
 import { LeaguePresenter } from './league.presenter';
 
@@ -36,6 +38,8 @@ export class LeagueController {
     private readonly _retrieveAllLeaguePassUseCases: UseCaseProxy<RetrieveAllLeagueUseCases>,
     @Inject(UsecasesProxyModule.RETRIEVE_LEAGUE_BY_ID_USE_CASE_PROXY)
     private readonly _retrieveLeagueByIdPassUseCases: UseCaseProxy<RetrieveLeagueByIdUseCases>,
+    @Inject(UsecasesProxyModule.RETRIEVE_TEAMS_BY_LEAGUE_ID_USE_CASE_PROXY)
+    private readonly _retrieveTeamsByLeagueIdUseCases: UseCaseProxy<RetrieveTeamsByLeagueIdUseCases>,
   ) {}
 
   @Post('')
@@ -61,7 +65,11 @@ export class LeagueController {
     type: [LeaguePresenter],
   })
   public async get(): Promise<LeaguePresenter[]> {
-    return this._retrieveAllLeaguePassUseCases.getInstance().execute();
+    const result = await this._retrieveAllLeaguePassUseCases
+      .getInstance()
+      .execute();
+
+    return result.map((value) => new LeaguePresenter(value));
   }
 
   @Get(':id')
@@ -82,5 +90,22 @@ export class LeagueController {
       );
     }
     return new LeaguePresenter(result);
+  }
+
+  @Get(':id/team')
+  @ApiOperation({ description: 'Retrieve the list of all teams by league id' })
+  @ApiResponse({
+    status: 200,
+    description: 'Succesful',
+    type: [TeamPresenter],
+  })
+  public async getTeamsByLeagueId(
+    @Param() { id }: IdDto,
+  ): Promise<TeamPresenter[]> {
+    const result = await this._retrieveTeamsByLeagueIdUseCases
+      .getInstance()
+      .execute(id);
+
+    return result.map((value) => new TeamPresenter(value));
   }
 }

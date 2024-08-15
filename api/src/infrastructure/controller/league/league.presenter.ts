@@ -1,16 +1,16 @@
 import { ILeague } from '@domain/models/league.inerface';
-import { ITeam } from '@domain/models/team.inerface';
 import { ApiProperty } from '@nestjs/swagger';
+import { TeamPresenter } from '../team/team.presenter';
 
 export class LeaguePresenter implements ILeague {
+  @ApiProperty({ type: Number })
+  public id: number;
   @ApiProperty({ type: String })
-  public id: string;
+  public name: string;
   @ApiProperty({ type: String })
-  name: string;
-  @ApiProperty({ type: String })
-  sport: string;
-  @ApiProperty()
-  teams?: ITeam[] | undefined;
+  public sport: string;
+  @ApiProperty({ type: () => TeamPresenter, isArray: true })
+  public teams: TeamPresenter[];
   @ApiProperty({ type: Date })
   public createdDate: Date;
   @ApiProperty({ type: Date })
@@ -20,6 +20,7 @@ export class LeaguePresenter implements ILeague {
     this.id = data.id;
     this.name = data.name;
     this.sport = data.sport;
+    this.teams = data.teams?.map((team) => new TeamPresenter(team)) ?? [];
     this.createdDate = data.createdDate;
     this.updatedDate = data.updatedDate;
   }
