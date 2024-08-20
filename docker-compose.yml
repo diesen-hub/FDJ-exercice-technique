@@ -40,3 +40,20 @@ services:
     volumes:
       - ./api:/app/api
       - ./common:/app/common
+  client:
+    container_name: FDJ-client
+    build:
+      context: client
+      dockerfile: Dockerfile
+      target: development
+    restart: always
+    command: ng serve --host 0.0.0.0
+    depends_on:
+      - api
+    ports:
+      - ${CLIENT_PORT}:4200
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./client:/app/client
+      - ./common:/app/common
