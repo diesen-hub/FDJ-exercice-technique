@@ -1,7 +1,9 @@
-<div class="h-screen" *ngIf="players$ | async as players">
+<div class="h-screen" *ngIf="this.players$ | async as players">
   <div class="flex items-center">
     <app-back-button></app-back-button>
-    <h1 class="flex-1 text-center text-3xl font-bold underline">Players</h1>
+    <h1 class="flex-1 text-center text-3xl font-bold underline">
+      {{ this.title }}
+    </h1>
   </div>
   <div class="mt-20 flex flex-col gap-2 md:grid grid-cols-2 lg:grid-cols-3">
     <div

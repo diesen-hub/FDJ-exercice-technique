@@ -1,15 +1,15 @@
-<div class="h-screen" *ngIf="leagues$ | async as leagues">
+<div class="h-screen" *ngIf="this.leagues$ | async as leagues">
   <h1 class="text-center text-3xl font-bold underline">Leagues</h1>
-  <form [formGroup]="form" class="mt-20 flex justify-center">
+  <form [formGroup]="this.form" class="mt-20 flex justify-center">
     <app-search-input formControlName="name"></app-search-input>
   </form>
   <div class="mt-20 flex flex-col text-center lg:flex-row lg:flex-wrap gap-4">
-    <a
+    <button
       *ngFor="let league of leagues"
       class="p-5 rounded bg-sky-700 hover:scale-110"
-      [routerLink]="['/league', league.id]"
+      (click)="handleCLick(league)"
     >
       <p>{{ league.name }}</p>
-    </a>
+    </button>
   </div>
 </div>

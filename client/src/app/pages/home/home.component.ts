@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GetLeagueType, LeagueType } from '@common/types/league.type';
 import {
   debounceTime,
@@ -11,6 +12,7 @@ import {
   takeUntil,
 } from 'rxjs';
 import { LeagueService } from 'src/app/services/league.services';
+import { TitleService } from 'src/app/services/title.services';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,9 @@ import { LeagueService } from 'src/app/services/league.services';
 export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _leagueService: LeagueService,
-    private readonly _fb: FormBuilder
+    private readonly _titleService: TitleService,
+    private readonly _fb: FormBuilder,
+    private readonly _router: Router
   ) {}
 
   private nameRplSubj = new ReplaySubject<string | undefined>();
@@ -45,6 +49,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((search) => this.nameRplSubj.next(search));
+  }
+
+  handleCLick(league: LeagueType): void {
+    this._titleService.titleRplSubj.next(league.name);
+    this._router.navigate(['/league', league.id]);
   }
 
   ngOnDestroy(): void {

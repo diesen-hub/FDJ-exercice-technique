@@ -1,17 +1,19 @@
-<div class="h-screen" *ngIf="teams$ | async as teams">
+<div class="h-screen" *ngIf="this.teams$ | async as teams">
   <div class="flex items-center">
     <app-back-button></app-back-button>
-    <h1 class="flex-1 text-center text-3xl font-bold underline">Teams</h1>
+    <h1 class="flex-1 text-center text-3xl font-bold underline">
+      {{ this.title }}
+    </h1>
   </div>
   <div
     class="mt-20 gap-4 grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-9"
   >
-    <a
+    <button
       *ngFor="let team of teams"
       class="w-32 hover:scale-105"
-      [routerLink]="['/team', team.id]"
+      (click)="handleCLick(team)"
     >
       <img [src]="team.thumbnail" alt="team logo" />
-    </a>
+    </button>
   </div>
 </div>
