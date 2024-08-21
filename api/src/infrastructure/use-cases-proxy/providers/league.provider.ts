@@ -3,6 +3,7 @@ import { Provider } from '@nestjs/common';
 import { CreateNewLeagueUseCases } from '@useCases/league/create-new-league.usecase';
 import { RetrieveAllLeagueUseCases } from '@useCases/league/retrieve-all-league.usecase';
 import { RetrieveLeagueByIdUseCases } from '@useCases/league/retrieve-league-by-id.usecase';
+import { RetrieveLeagueByNameUseCases } from '@useCases/league/retrieve-league-by-name.usecase';
 import { ELeagueUseCaseProxy } from '../use-case.type';
 import { UseCaseProxy } from '../usecases-proxy';
 
@@ -24,5 +25,11 @@ export const LeagueProvider: Provider[] = [
     provide: ELeagueUseCaseProxy.retrieveLeagueByIdUseCasesUseCasesProxy,
     useFactory: (leagueRepository: LeagueRepository) =>
       new UseCaseProxy(new RetrieveLeagueByIdUseCases(leagueRepository)),
+  },
+  {
+    inject: [LeagueRepository],
+    provide: ELeagueUseCaseProxy.retrieveLeagueByNameUseCasesUseCasesProxy,
+    useFactory: (leagueRepository: LeagueRepository) =>
+      new UseCaseProxy(new RetrieveLeagueByNameUseCases(leagueRepository)),
   },
 ];

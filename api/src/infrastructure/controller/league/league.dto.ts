@@ -1,7 +1,7 @@
-import { CreateLeagueType } from '@common/types/league.type';
+import { CreateLeagueType, GetLeagueType } from '@common/types/league.type';
 import { LEAGUE_CONST } from '@domain/const/league.const';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 
 export class CreateLeagueDto implements CreateLeagueType {
   @ApiProperty({ required: true, type: String })
@@ -13,4 +13,11 @@ export class CreateLeagueDto implements CreateLeagueType {
   @IsNotEmpty()
   @MaxLength(LEAGUE_CONST.sport.max)
   public readonly sport: string;
+}
+
+export class RetrieveLeagueDTO implements GetLeagueType {
+  @ApiProperty({ type: String, required: false })
+  @IsOptional()
+  @IsNotEmpty()
+  public readonly name: string;
 }

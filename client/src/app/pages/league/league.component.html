@@ -3,7 +3,9 @@
     <app-back-button></app-back-button>
     <h1 class="flex-1 text-center text-3xl font-bold underline">Teams</h1>
   </div>
-  <div class="mt-20 flex gap-2">
+  <div
+    class="mt-20 gap-4 grid justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-9"
+  >
     <a
       *ngFor="let team of teams"
       class="w-32 hover:scale-105"

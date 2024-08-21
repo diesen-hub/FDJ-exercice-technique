@@ -3,7 +3,7 @@
     <app-back-button></app-back-button>
     <h1 class="flex-1 text-center text-3xl font-bold underline">Players</h1>
   </div>
-  <div class="mt-20 flex gap-2">
+  <div class="mt-20 flex flex-col gap-2 md:grid grid-cols-2 lg:grid-cols-3">
     <div
       *ngFor="let player of players"
       class="p-5 flex items-center gap-2 bg-blue-50"
@@ -17,7 +17,7 @@
         <p class="font-bold">{{ player.name }}</p>
         <p class="font-light text-gray-600">{{ player.position }}</p>
         <p class="font-light text-gray-600">birthdate: {{ player.born }}</p>
-        <p class="font-light text-gray-600" *ngIf="player.signins?.[0]?.amount">
+        <p class="font-light text-gray-600">
           price:
           {{ player.signins[0].amount > 0 ? player.signins[0].amount : "free" }}
         </p>

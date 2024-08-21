@@ -9,6 +9,7 @@ import {
   NotFoundException,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import {
   ApiExtraModels,
@@ -19,10 +20,11 @@ import {
 import { CreateNewLeagueUseCases } from '@useCases/league/create-new-league.usecase';
 import { RetrieveAllLeagueUseCases } from '@useCases/league/retrieve-all-league.usecase';
 import { RetrieveLeagueByIdUseCases } from '@useCases/league/retrieve-league-by-id.usecase';
+import { RetrieveLeagueByNameUseCases } from '@useCases/league/retrieve-league-by-name.usecase';
 import { RetrieveTeamsByLeagueIdUseCases } from '@useCases/team/retrieve-teams-by-league-id.usecase';
 import { IdDto } from '../dto/id.dto';
 import { TeamPresenter } from '../team/team.presenter';
-import { CreateLeagueDto } from './league.dto';
+import { CreateLeagueDto, RetrieveLeagueDTO } from './league.dto';
 import { LeaguePresenter } from './league.presenter';
 
 @Controller('league')
@@ -40,6 +42,8 @@ export class LeagueController {
     private readonly _retrieveLeagueByIdPassUseCases: UseCaseProxy<RetrieveLeagueByIdUseCases>,
     @Inject(UsecasesProxyModule.RETRIEVE_TEAMS_BY_LEAGUE_ID_USE_CASE_PROXY)
     private readonly _retrieveTeamsByLeagueIdUseCases: UseCaseProxy<RetrieveTeamsByLeagueIdUseCases>,
+    @Inject(UsecasesProxyModule.RETRIEVE_LEAGUE_BY_NAME_USE_CASE_PROXY)
+    private readonly _retrieveLeagueByNamePassUseCases: UseCaseProxy<RetrieveLeagueByNameUseCases>,
   ) {}
 
   @Post('')
@@ -64,10 +68,12 @@ export class LeagueController {
     description: 'Succesful',
     type: [LeaguePresenter],
   })
-  public async get(): Promise<LeaguePresenter[]> {
+  public async get(
+    @Query() queryParams: RetrieveLeagueDTO,
+  ): Promise<LeaguePresenter[]> {
     const result = await this._retrieveAllLeaguePassUseCases
       .getInstance()
-      .execute();
+      .execute(queryParams?.name);
 
     return result.map((value) => new LeaguePresenter(value));
   }

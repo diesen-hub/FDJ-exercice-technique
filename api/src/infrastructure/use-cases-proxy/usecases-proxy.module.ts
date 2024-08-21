@@ -23,6 +23,8 @@ export class UsecasesProxyModule {
     ELeagueUseCaseProxy.retrieveAllLeagueUseCasesUseCasesProxy;
   static RETRIEVE_LEAGUE_BY_ID_USE_CASE_PROXY =
     ELeagueUseCaseProxy.retrieveLeagueByIdUseCasesUseCasesProxy;
+  static RETRIEVE_LEAGUE_BY_NAME_USE_CASE_PROXY =
+    ELeagueUseCaseProxy.retrieveLeagueByNameUseCasesUseCasesProxy;
 
   // Team
   static CREATE_NEW_TEAM_USE_CASE_PROXY =
@@ -57,6 +59,7 @@ export class UsecasesProxyModule {
         UsecasesProxyModule.CREATE_NEW_LEAGUE_USE_CASE_PROXY,
         UsecasesProxyModule.RETRIEVE_ALL_LEAGUE_USE_CASE_PROXY,
         UsecasesProxyModule.RETRIEVE_LEAGUE_BY_ID_USE_CASE_PROXY,
+        UsecasesProxyModule.RETRIEVE_LEAGUE_BY_NAME_USE_CASE_PROXY,
         UsecasesProxyModule.CREATE_NEW_TEAM_USE_CASE_PROXY,
         UsecasesProxyModule.RETRIEVE_TEAMS_BY_LEAGUE_ID_USE_CASE_PROXY,
         UsecasesProxyModule.RETRIEVE_TEAM_BY_ID_USE_CASE_PROXY,

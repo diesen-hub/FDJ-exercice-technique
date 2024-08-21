@@ -2,6 +2,7 @@ export enum ELeagueUseCaseProxy {
   createNewLeagueUseCasesProxy = 'createNewLeagueUseCasesProxy',
   retrieveAllLeagueUseCasesUseCasesProxy = 'retrieveAllLeagueUseCasesUseCasesProxy',
   retrieveLeagueByIdUseCasesUseCasesProxy = 'retrieveLeagueByIdUseCasesUseCasesProxy',
+  retrieveLeagueByNameUseCasesUseCasesProxy = 'retrieveLeagueByNameUseCasesUseCasesProxy',
 }
 
 export enum ETeamUseCaseProxy {

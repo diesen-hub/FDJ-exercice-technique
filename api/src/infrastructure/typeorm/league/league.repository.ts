@@ -2,7 +2,7 @@ import { ICreateLeague, ILeague } from '@domain/models/league.interface';
 import { ILeagueRepository } from '@domain/repositories/league.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InsertResult, Repository } from 'typeorm';
+import { ILike, InsertResult, Repository } from 'typeorm';
 import { LeagueEntity } from './league.entity';
 
 @Injectable()
@@ -29,5 +29,14 @@ export class LeagueRepository implements ILeagueRepository {
       where: { id: id },
     });
     return leagueEntity?.toDomaineEntity() ?? null;
+  }
+
+  public async getByName(name: string): Promise<ILeague[]> {
+    const leagueEntities: LeagueEntity[] = await this._leagueRepository.find({
+      where: {
+        name: ILike(`%${name}%`),
+      },
+    });
+    return leagueEntities.map((leagueEntity) => leagueEntity.toDomaineEntity());
   }
 }

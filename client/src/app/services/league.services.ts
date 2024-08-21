@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LeagueType } from '@common/types/league.type';
+import { GetLeagueType, LeagueType } from '@common/types/league.type';
 import { TeamType } from '@common/types/team.type';
 import { Observable } from 'rxjs';
 import { endpoints } from 'src/assets/api/api.enpoints';
@@ -11,8 +11,10 @@ import { endpoints } from 'src/assets/api/api.enpoints';
 export class LeagueService {
   constructor(private readonly _httpClient: HttpClient) {}
 
-  public get(): Observable<LeagueType[]> {
-    return this._httpClient.get<LeagueType[]>(`${endpoints.league.base}`);
+  public get(data: GetLeagueType): Observable<LeagueType[]> {
+    return this._httpClient.get<LeagueType[]>(`${endpoints.league.base}`, {
+      params: { ...data },
+    });
   }
 
   public getTeamByLeagueId(id: string): Observable<TeamType[]> {

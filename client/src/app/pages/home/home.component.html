@@ -1,6 +1,9 @@
 <div class="h-screen" *ngIf="leagues$ | async as leagues">
   <h1 class="text-center text-3xl font-bold underline">Leagues</h1>
-  <div class="mt-20 flex gap-2">
+  <form [formGroup]="form" class="mt-20 flex justify-center">
+    <app-search-input formControlName="name"></app-search-input>
+  </form>
+  <div class="mt-20 flex flex-col text-center lg:flex-row lg:flex-wrap gap-4">
     <a
       *ngFor="let league of leagues"
       class="p-5 rounded bg-sky-700 hover:scale-110"

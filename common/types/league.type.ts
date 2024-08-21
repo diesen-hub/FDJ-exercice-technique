@@ -5,6 +5,10 @@ export type CreateLeagueType = {
   sport: string;
 };
 
+export type GetLeagueType = {
+  name?: string;
+};
+
 export type LeagueType = {
   id: number;
   name: string;
