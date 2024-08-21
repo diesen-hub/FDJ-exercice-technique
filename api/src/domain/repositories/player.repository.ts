@@ -1,4 +1,4 @@
-import { ICreatePlayer, IPlayer } from '../models/player.inerface';
+import { ICreatePlayer, IPlayer } from '../models/player.interface';
 
 export interface IPlayerRepository {
   create(data: ICreatePlayer): Promise<IPlayer | null>;

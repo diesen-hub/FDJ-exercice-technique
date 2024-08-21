@@ -20,8 +20,8 @@ services:
   api:
     container_name: FDJ-api
     build:
-      context: api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
       target: development
     restart: always
     command: npm run start:dev
@@ -43,8 +43,8 @@ services:
   client:
     container_name: FDJ-client
     build:
-      context: client
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: client/Dockerfile
       target: development
     restart: always
     command: ng serve --host 0.0.0.0

@@ -1,4 +1,4 @@
-import { ICreatePlayer, IPlayer } from '@domain/models/player.inerface';
+import { ICreatePlayer, IPlayer } from '@domain/models/player.interface';
 import { IPlayerRepository } from '@domain/repositories/player.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

@@ -1,13 +1,17 @@
-FROM node:18.20-alpine AS development
+FROM node:18-alpine AS development
+
+WORKDIR /app/common
+
+COPY ./common .
 
 WORKDIR /app/client
 
-COPY package*.json ./
+COPY ./client/package*.json ./
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@17
 
 RUN npm install
 
-COPY . .
+COPY ./client/ .
 
 RUN npm run build

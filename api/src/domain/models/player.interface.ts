@@ -1,5 +1,5 @@
-import { ISignin } from './signin.inerface';
-import { ITeam } from './team.inerface';
+import { ISignin } from './signin.interface';
+import { ITeam } from './team.interface';
 
 export interface ICreatePlayer {
   name: string;

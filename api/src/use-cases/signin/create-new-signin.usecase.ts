@@ -1,5 +1,5 @@
 import { IException } from '@domain/exceptions/exceptions.interface';
-import { ICreateSignin, ISignin } from '@domain/models/signin.inerface';
+import { ICreateSignin, ISignin } from '@domain/models/signin.interface';
 import { IPlayerRepository } from '@domain/repositories/player.repository';
 import { ISigninRepository } from '@domain/repositories/signin.repository';
 import { ITeamRepository } from '@domain/repositories/team.repository';

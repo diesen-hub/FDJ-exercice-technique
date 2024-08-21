@@ -1,10 +1,10 @@
+import { CreateTeamType } from '@common/types/team.type';
 import { TEAM_CONST } from '@domain/const/team.const';
-import { ICreateTeam } from '@domain/models/team.inerface';
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsNotEmpty, IsPositive, IsUrl, MaxLength } from 'class-validator';
 
-export class CreateTeamDto implements ICreateTeam {
+export class CreateTeamDto implements CreateTeamType {
   @ApiProperty({ required: true, type: Number })
   @Transform((p) => Number(p.value))
   @IsPositive()

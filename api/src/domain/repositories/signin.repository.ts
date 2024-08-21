@@ -1,4 +1,4 @@
-import { ICreateSignin, ISignin } from '../models/signin.inerface';
+import { ICreateSignin, ISignin } from '../models/signin.interface';
 
 export interface ISigninRepository {
   create(data: ICreateSignin): Promise<ISignin | null>;

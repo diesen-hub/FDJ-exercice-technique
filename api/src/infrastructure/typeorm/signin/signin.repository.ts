@@ -1,4 +1,4 @@
-import { ICreateSignin, ISignin } from '@domain/models/signin.inerface';
+import { ICreateSignin, ISignin } from '@domain/models/signin.interface';
 import { ISigninRepository } from '@domain/repositories/signin.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

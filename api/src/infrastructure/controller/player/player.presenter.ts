@@ -1,9 +1,10 @@
-import { IPlayer } from '@domain/models/player.inerface';
+import { PlayerType } from '@common/types/player.type';
+import { IPlayer } from '@domain/models/player.interface';
 import { ApiProperty } from '@nestjs/swagger';
 import { SigninPresenter } from '../signin/signin.presenter';
 import { TeamPresenter } from '../team/team.presenter';
 
-export class PlayerPresenter implements IPlayer {
+export class PlayerPresenter implements PlayerType {
   @ApiProperty({ type: Number })
   public id: number;
   @ApiProperty({ type: Number })

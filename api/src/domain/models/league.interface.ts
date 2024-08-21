@@ -1,4 +1,4 @@
-import { ITeam } from './team.inerface';
+import { ITeam } from './team.interface';
 
 export interface ICreateLeague {
   name: string;

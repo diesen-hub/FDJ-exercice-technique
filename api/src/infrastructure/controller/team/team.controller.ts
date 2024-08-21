@@ -72,7 +72,7 @@ export class TeamController {
     return new TeamPresenter(result);
   }
 
-  @Get('/player/:id')
+  @Get(':id/player')
   @ApiOperation({ description: 'Retrieve the list of all players by team id' })
   @ApiResponse({
     status: 200,

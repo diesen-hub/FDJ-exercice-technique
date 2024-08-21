@@ -21,7 +21,7 @@ Containers :
 #### Build/Rebuild and start the application
 
 ```bash
-$ docker-compose --env-file ./common/env/local.env up --build
+$ docker-compose --env-file ./common/env/env.local up --build
 ```
 
 ## Database

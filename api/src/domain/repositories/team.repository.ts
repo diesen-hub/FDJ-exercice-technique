@@ -1,4 +1,4 @@
-import { ICreateTeam, ITeam } from '../models/team.inerface';
+import { ICreateTeam, ITeam } from '../models/team.interface';
 
 export interface ITeamRepository {
   create(data: ICreateTeam): Promise<ITeam | null>;

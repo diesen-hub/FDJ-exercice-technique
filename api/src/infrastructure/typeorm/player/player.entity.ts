@@ -1,4 +1,4 @@
-import { IPlayer } from '@domain/models/player.inerface';
+import { IPlayer } from '@domain/models/player.interface';
 import {
   Column,
   CreateDateColumn,

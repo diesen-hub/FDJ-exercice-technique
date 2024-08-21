@@ -1,7 +1,8 @@
-import { ISignin } from '@domain/models/signin.inerface';
+import { SigninType } from '@common/types/signin.type';
+import { ISignin } from '@domain/models/signin.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class SigninPresenter implements ISignin {
+export class SigninPresenter implements SigninType {
   @ApiProperty({ type: Number })
   public id: number;
   @ApiProperty({ type: Number })

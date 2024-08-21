@@ -1,4 +1,4 @@
-import { ICreateLeague, ILeague } from '@domain/models/league.inerface';
+import { ICreateLeague, ILeague } from '@domain/models/league.interface';
 import { LeagueRepository } from '@infrastructure/typeorm/league/league.repository';
 import { CreateNewLeagueUseCases } from './create-new-league.usecase';
 import { RetrieveAllLeagueUseCases } from './retrieve-all-league.usecase';

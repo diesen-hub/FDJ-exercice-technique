@@ -1,4 +1,4 @@
-import { ICreateTeam, ITeam } from '@domain/models/team.inerface';
+import { ICreateTeam, ITeam } from '@domain/models/team.interface';
 import { ITeamRepository } from '@domain/repositories/team.repository';
 
 export class CreateNewTeamUseCases {

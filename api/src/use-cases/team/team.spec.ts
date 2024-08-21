@@ -1,4 +1,4 @@
-import { ICreateTeam, ITeam } from '@domain/models/team.inerface';
+import { ICreateTeam, ITeam } from '@domain/models/team.interface';
 import { TeamRepository } from '@infrastructure/typeorm/team/team.repository';
 import { CreateNewTeamUseCases } from './create-new-team.usecase';
 import { RetrieveTeamByIdUseCases } from './retrieve-team-by-id.usecase';

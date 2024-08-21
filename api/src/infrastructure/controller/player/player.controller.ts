@@ -1,4 +1,4 @@
-import { ICreateSignin } from '@domain/models/signin.inerface';
+import { ICreateSignin } from '@domain/models/signin.interface';
 import { UseCaseProxy } from '@infrastructure/use-cases-proxy/usecases-proxy';
 import { UsecasesProxyModule } from '@infrastructure/use-cases-proxy/usecases-proxy.module';
 import {

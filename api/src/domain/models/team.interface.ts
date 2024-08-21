@@ -1,6 +1,6 @@
-import { ILeague } from './league.inerface';
-import { IPlayer } from './player.inerface';
-import { ISignin } from './signin.inerface';
+import { ILeague } from './league.interface';
+import { IPlayer } from './player.interface';
+import { ISignin } from './signin.interface';
 
 export interface ICreateTeam {
   leagueId: number;

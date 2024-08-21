@@ -1,0 +1,15 @@
+<div class="h-screen" *ngIf="teams$ | async as teams">
+  <div class="flex items-center">
+    <app-back-button></app-back-button>
+    <h1 class="flex-1 text-center text-3xl font-bold underline">Teams</h1>
+  </div>
+  <div class="mt-20 flex gap-2">
+    <a
+      *ngFor="let team of teams"
+      class="w-32 hover:scale-105"
+      [routerLink]="['/team', team.id]"
+    >
+      <img [src]="team.thumbnail" alt="team logo" />
+    </a>
+  </div>
+</div>

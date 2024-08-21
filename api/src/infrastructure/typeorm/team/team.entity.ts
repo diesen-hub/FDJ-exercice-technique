@@ -1,4 +1,4 @@
-import { ITeam } from '@domain/models/team.inerface';
+import { ITeam } from '@domain/models/team.interface';
 import {
   Column,
   CreateDateColumn,

@@ -1,4 +1,4 @@
-import { ICreatePlayer, IPlayer } from '@domain/models/player.inerface';
+import { ICreatePlayer, IPlayer } from '@domain/models/player.interface';
 import { PlayerRepository } from '@infrastructure/typeorm/player/player.repository';
 import { CreateNewPlayerUseCases } from './create-new-player.usecase';
 import { RetrievePlayerByIdUseCases } from './retrieve-player-by-id.usecase';

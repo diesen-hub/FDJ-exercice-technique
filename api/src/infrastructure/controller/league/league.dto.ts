@@ -1,9 +1,9 @@
+import { CreateLeagueType } from '@common/types/league.type';
 import { LEAGUE_CONST } from '@domain/const/league.const';
-import { ICreateLeague } from '@domain/models/league.inerface';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MaxLength } from 'class-validator';
 
-export class CreateLeagueDto implements ICreateLeague {
+export class CreateLeagueDto implements CreateLeagueType {
   @ApiProperty({ required: true, type: String })
   @IsNotEmpty()
   @MaxLength(LEAGUE_CONST.name.max)

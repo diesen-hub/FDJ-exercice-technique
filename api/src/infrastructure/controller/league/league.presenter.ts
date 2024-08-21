@@ -1,8 +1,9 @@
-import { ILeague } from '@domain/models/league.inerface';
+import { LeagueType } from '@common/types/league.type';
+import { ILeague } from '@domain/models/league.interface';
 import { ApiProperty } from '@nestjs/swagger';
 import { TeamPresenter } from '../team/team.presenter';
 
-export class LeaguePresenter implements ILeague {
+export class LeaguePresenter implements LeagueType {
   @ApiProperty({ type: Number })
   public id: number;
   @ApiProperty({ type: String })

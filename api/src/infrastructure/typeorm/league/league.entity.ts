@@ -1,4 +1,4 @@
-import { ILeague } from '@domain/models/league.inerface';
+import { ILeague } from '@domain/models/league.interface';
 import {
   Column,
   CreateDateColumn,

@@ -1,6 +1,6 @@
-import { IPlayer } from '@domain/models/player.inerface';
-import { ICreateSignin, ISignin } from '@domain/models/signin.inerface';
-import { ITeam } from '@domain/models/team.inerface';
+import { IPlayer } from '@domain/models/player.interface';
+import { ICreateSignin, ISignin } from '@domain/models/signin.interface';
+import { ITeam } from '@domain/models/team.interface';
 import { ExceptionsService } from '@infrastructure/exceptions/exceptions.service';
 import { PlayerRepository } from '@infrastructure/typeorm/player/player.repository';
 import { SigninRepository } from '@infrastructure/typeorm/signin/signin.repository';

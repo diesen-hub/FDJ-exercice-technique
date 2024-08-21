@@ -1,4 +1,4 @@
-import { ICreateTeam, ITeam } from '@domain/models/team.inerface';
+import { ICreateTeam, ITeam } from '@domain/models/team.interface';
 import { ITeamRepository } from '@domain/repositories/team.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

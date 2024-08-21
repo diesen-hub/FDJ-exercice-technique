@@ -1,0 +1,12 @@
+<div class="h-screen" *ngIf="leagues$ | async as leagues">
+  <h1 class="text-center text-3xl font-bold underline">Leagues</h1>
+  <div class="mt-20 flex gap-2">
+    <a
+      *ngFor="let league of leagues"
+      class="p-5 rounded bg-sky-700 hover:scale-110"
+      [routerLink]="['/league', league.id]"
+    >
+      <p>{{ league.name }}</p>
+    </a>
+  </div>
+</div>

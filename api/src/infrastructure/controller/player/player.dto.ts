@@ -1,7 +1,7 @@
+import { CreatePlayerType } from '@common/types/player.type';
+import { CreateSigninType } from '@common/types/signin.type';
 import { PLAYER_CONST } from '@domain/const/player.const';
 import { SIGNIN_CONST } from '@domain/const/signin.const';
-import { ICreatePlayer } from '@domain/models/player.inerface';
-import { ICreateSignin } from '@domain/models/signin.inerface';
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
@@ -14,7 +14,7 @@ import {
   Min,
 } from 'class-validator';
 
-export class CreatePlayerDto implements ICreatePlayer {
+export class CreatePlayerDto implements CreatePlayerType {
   @ApiProperty({ required: true, type: String })
   @IsNotEmpty()
   @MaxLength(PLAYER_CONST.name.max)
@@ -35,9 +35,7 @@ export class CreatePlayerDto implements ICreatePlayer {
   public readonly born: Date;
 }
 
-export class AgregateSiginToPlayerDto
-  implements Omit<ICreateSignin, 'playerId'>
-{
+export class AgregateSiginToPlayerDto implements CreateSigninType {
   @ApiProperty({ required: true, type: Number })
   @Transform((p) => Number(p.value))
   @IsPositive()

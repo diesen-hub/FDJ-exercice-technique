@@ -1,4 +1,4 @@
-import { ISignin } from '@domain/models/signin.inerface';
+import { ISignin } from '@domain/models/signin.interface';
 import {
   CreateDateColumn,
   Entity,

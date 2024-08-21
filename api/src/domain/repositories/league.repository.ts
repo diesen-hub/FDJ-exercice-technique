@@ -1,4 +1,4 @@
-import { ICreateLeague, ILeague } from '../models/league.inerface';
+import { ICreateLeague, ILeague } from '../models/league.interface';
 
 export interface ILeagueRepository {
   create(data: ICreateLeague): Promise<ILeague | null>;

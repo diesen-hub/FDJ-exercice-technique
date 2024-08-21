@@ -1,0 +1,27 @@
+<div class="h-screen" *ngIf="players$ | async as players">
+  <div class="flex items-center">
+    <app-back-button></app-back-button>
+    <h1 class="flex-1 text-center text-3xl font-bold underline">Players</h1>
+  </div>
+  <div class="mt-20 flex gap-2">
+    <div
+      *ngFor="let player of players"
+      class="p-5 flex items-center gap-2 bg-blue-50"
+    >
+      <img
+        [src]="player.thumbnail"
+        alt="Player image"
+        class="aspect-square w-28"
+      />
+      <div>
+        <p class="font-bold">{{ player.name }}</p>
+        <p class="font-light text-gray-600">{{ player.position }}</p>
+        <p class="font-light text-gray-600">birthdate: {{ player.born }}</p>
+        <p class="font-light text-gray-600" *ngIf="player.signins?.[0]?.amount">
+          price:
+          {{ player.signins[0].amount > 0 ? player.signins[0].amount : "free" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

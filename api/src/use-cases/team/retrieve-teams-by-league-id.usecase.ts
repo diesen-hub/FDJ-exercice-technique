@@ -1,4 +1,4 @@
-import { ITeam } from '@domain/models/team.inerface';
+import { ITeam } from '@domain/models/team.interface';
 import { ITeamRepository } from '@domain/repositories/team.repository';
 
 export class RetrieveTeamsByLeagueIdUseCases {
